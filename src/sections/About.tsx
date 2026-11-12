@@ -1,25 +1,26 @@
-import { Code2, Lightbulb, Rocket, Users } from "lucide-react";
+import { FaLightbulb, FaRocket } from "react-icons/fa";
+import { FiCode, FiUsers } from "react-icons/fi";
 
 const highlights = [
   {
-    icon: Code2,
+    icon: FiCode,
     title: "Clean Code",
     description:
       "Writing maintainable, scalable code that stands the test of time.",
   },
   {
-    icon: Rocket,
+    icon: FaRocket,
     title: "Performance",
     description:
       "Optimizing for speed and delivering lightning-fast user experiences.",
   },
   {
-    icon: Users,
+    icon: FiUsers,
     title: "Collaboration",
     description: "Working closely with teams to bring ideas to life.",
   },
   {
-    icon: Lightbulb,
+    icon: FaLightbulb,
     title: "Innovation",
     description:
       "Staying ahead with the latest technologies and best practices.",

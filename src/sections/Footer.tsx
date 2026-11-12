@@ -1,9 +1,9 @@
-import { Github, Linkedin, Twitter, Heart } from "lucide-react";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const socialLinks = [
-  { icon: Github, href: "#", label: "GitHub" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: FaGithub, href: "#", label: "GitHub" },
+  { icon: FaLinkedin, href: "#", label: "LinkedIn" },
+  { icon: FaTwitter, href: "#", label: "Twitter" },
 ];
 
 const footerLinks = [

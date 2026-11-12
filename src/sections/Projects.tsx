@@ -1,4 +1,5 @@
-import { ArrowUpRight, Github } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
+import { FiArrowUpRight } from "react-icons/fi";
 import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
 const projects = [
   {
@@ -90,13 +91,13 @@ export const Projects = () => {
                     href={project.link}
                     className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
                   >
-                    <ArrowUpRight className="w-5 h-5" />
+                    <FiArrowUpRight className="w-5 h-5" />
                   </a>
                   <a
                     href={project.github}
                     className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
                   >
-                    <Github className="w-5 h-5" />
+                    <FaGithub className="w-5 h-5" />
                   </a>
                 </div>
               </div>
@@ -107,7 +108,7 @@ export const Projects = () => {
                   <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
-                  <ArrowUpRight
+                  <FiArrowUpRight
                     className="w-5 h-5 
                   text-muted-foreground group-hover:text-primary
                    group-hover:translate-x-1 
@@ -136,7 +137,7 @@ export const Projects = () => {
         <div className="text-center mt-12 animate-fade-in animation-delay-500">
           <AnimatedBorderButton>
             View All Projects
-            <ArrowUpRight className="w-5 h-5" />
+            <FiArrowUpRight className="w-5 h-5" />
           </AnimatedBorderButton>
         </div>
       </div>

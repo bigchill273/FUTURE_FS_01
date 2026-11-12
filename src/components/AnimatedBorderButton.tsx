@@ -1,6 +1,9 @@
-import { Download } from "lucide-react";
+import { PERSONAL_INFO } from "@/lib/constants";
+import type { PropsWithChildren } from "react";
 
-export const AnimatedBorderButton = ({ children }) => {
+export const AnimatedBorderButton = ({
+  children,
+}: PropsWithChildren) => {
   return (
     <button
       className="relative bg-transparent border border-border 
@@ -9,7 +12,7 @@ export const AnimatedBorderButton = ({ children }) => {
         focus-visible:ring-primary focus-visible:ring-offset-2 
         disabled:opacity-50 disabled:cursor-not-allowed group 
         px-8 py-4 text-lg font-medium rounded-full overflow-visible 
-        animated-border"
+        animated-border hover:scale-110 ease-in-out"
     >
       {/* Animated SVG Border */}
       <svg
@@ -27,12 +30,12 @@ export const AnimatedBorderButton = ({ children }) => {
           strokeDashoffset="400"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="animated-border-path"
+          className="animated-border-path hover:scale-105"
         />
       </svg>
-      <span className="relative z-10 flex items-center justify-center gap-2">
+      <a href={PERSONAL_INFO.resumeUrl} className="relative px-4.5 z-10 flex items-center justify-center gap-2">
         {children}
-      </span>
+      </a>
     </button>
   );
 };

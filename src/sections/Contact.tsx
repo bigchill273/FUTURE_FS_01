@@ -1,30 +1,31 @@
 import {
-  Mail,
-  Phone,
-  MapPin,
-  Send,
-  CheckCircle,
-  AlertCircle,
-} from "lucide-react";
+  FiAlertCircle,
+  FiCheckCircle,
+  FiMail,
+  FiMapPin,
+  FiPhone,
+  FiSend,
+} from "react-icons/fi";
 import { Button } from "@/components/Button";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
+import type { FormEvent } from "react";
 
 const contactInfo = [
   {
-    icon: Mail,
+    icon: FiMail,
     label: "Email",
     value: "pedro@example.com",
     href: "mailto:pedro@example.com",
   },
   {
-    icon: Phone,
+    icon: FiPhone,
     label: "Phone",
     value: "+1 (555) 123-4567",
     href: "tel:+15551234567",
   },
   {
-    icon: MapPin,
+    icon: FiMapPin,
     label: "Location",
     value: "San Francisco, CA",
     href: "#",
@@ -43,7 +44,7 @@ export const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setIsLoading(true);
@@ -75,7 +76,7 @@ export const Contact = () => {
         message: "Message sent successfully! I'll get back to you soon.",
       });
       setFormData({ name: "", email: "", message: "" });
-    } catch (err) {
+    } catch (error) {
       console.error("EmailJS error:", error);
       setSubmitStatus({
         type: "error",
@@ -137,7 +138,6 @@ export const Contact = () => {
               <div>
                 <label
                   htmlFor="email"
-                  type="email"
                   className="block text-sm font-medium mb-2"
                 >
                   Email
@@ -183,7 +183,7 @@ export const Contact = () => {
                 ) : (
                   <>
                     Send Message
-                    <Send className="w-5 h-5" />
+                    <FiSend className="w-5 h-5" />
                   </>
                 )}
               </Button>
@@ -198,9 +198,9 @@ export const Contact = () => {
                      }`}
                 >
                   {submitStatus.type === "success" ? (
-                    <CheckCircle className="w-5 h-5 flex-shrink-0" />
+                    <FiCheckCircle className="w-5 h-5 flex-shrink-0" />
                   ) : (
-                    <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                    <FiAlertCircle className="w-5 h-5 flex-shrink-0" />
                   )}
                   <p className="text-sm">{submitStatus.message}</p>
                 </div>
