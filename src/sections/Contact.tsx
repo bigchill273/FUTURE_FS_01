@@ -105,8 +105,16 @@ export const Contact = () => {
           <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
             Get In Touch
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
-            {CONTACT_INFO.heading}
+          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-white">
+            {CONTACT_INFO.heading.split(/(connect|build)/gi).map((part, idx) =>
+              /^(connect|build)$/i.test(part) ? (
+                <span key={idx} className="text-primary">
+                  {part}
+                </span>
+              ) : (
+                part
+              ),
+            )}
           </h2>
           <p className="text-muted-foreground animate-fade-in animation-delay-200">
             {CONTACT_INFO.subheading}

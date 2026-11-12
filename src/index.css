@@ -129,6 +129,21 @@
     animation: marquee 30s linear infinite;
   }
 
+  .skill-marquee-highlight {
+    mask-image: linear-gradient(
+      90deg,
+      transparent calc(50% - 2.5rem),
+      #000 50%,
+      transparent calc(50% + 2.5rem)
+    );
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent calc(50% - 2.5rem),
+      #000 50%,
+      transparent calc(50% + 2.5rem)
+    );
+  }
+
   .animation-delay-100 {
     animation-delay: 100ms;
   }

@@ -6,10 +6,43 @@ import {
   SKILL_CATEGORIES,
   SOCIAL_LINKS,
 } from "@/lib/constants";
+import {
+  SiBun,
+  SiExpress,
+  SiGit,
+  SiJavascript,
+  SiMongodb,
+  SiMysql,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPostman,
+  SiReact,
+  SiTailwindcss,
+  SiTypescript,
+  SiVite,
+} from "react-icons/si";
+import type { IconType } from "react-icons";
 import { TypeAnimation } from "react-type-animation";
+
+const skillIcons: Record<string, IconType> = {
+  react: SiReact,
+  FileCode: SiTypescript,
+  Zap: SiJavascript,
+  Palette: SiTailwindcss,
+  Server: SiNodedotjs,
+  Layers: SiExpress,
+  Network: SiPostman,
+  Database: SiMongodb,
+  Table: SiMysql,
+  Boxes: SiPostgresql,
+  GitBranch: SiGit,
+  Cpu: SiVite,
+  Bun: SiBun,
+};
 
 export const Hero = () => {
   const sequence = PERSONAL_INFO.typedText.flatMap((item) => [item, 1500]);
+  const tickerSkills = [...SKILL_CATEGORIES, ...SKILL_CATEGORIES];
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -19,6 +52,7 @@ export const Hero = () => {
           src="/hero-bg.jpg"
           alt="Hero image"
           className="w-full h-full object-cover opacity-40"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-linear-to-b from-background/20 via-background/80 to-background" />
       </div>
@@ -27,6 +61,7 @@ export const Hero = () => {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(30)].map((_, i) => (
           <div
+            key={i}
             className="absolute w-1.5 h-1.5 rounded-full opacity-60"
             style={{
               backgroundColor: "#5b5fdd",
@@ -115,6 +150,7 @@ export const Hero = () => {
                   src={PERSONAL_INFO.avatarUrl}
                   alt={PERSONAL_INFO.name}
                   className="w-full aspect-4/5 object-cover rounded-2xl"
+                  loading="lazy"
                 />
 
                 {/* Floating Badge */}
@@ -152,14 +188,42 @@ export const Hero = () => {
               className="absolute right-0 top-0 bottom-0 w-32
              bg-linear-to-l from-background to-transparent z-10"
             />
-            <div className="flex animate-marquee">
-              {[...SKILL_CATEGORIES, ...SKILL_CATEGORIES].map((skill, idx) => (
-                <div key={idx} className="shrink-0 px-8 py-4">
-                  <span className="text-xl font-semibold text-muted-foreground/50 hover:text-muted-foreground transition-colors">
-                    {skill.name}
-                  </span>
-                </div>
-              ))}
+            <div className="flex w-max animate-marquee">
+              {tickerSkills.map((skill, idx) => {
+                const SkillIcon = skillIcons[skill.icon];
+
+                return (
+                  <div
+                    key={`${skill.name}-${idx}`}
+                    className="flex shrink-0 items-center gap-3 px-8 py-4 text-muted-foreground/50"
+                  >
+                    <SkillIcon aria-hidden="true" className="h-5 w-5" />
+                    <span className="text-xl font-semibold">{skill.name}</span>
+                  </div>
+                );
+              })}
+            </div>
+            <div
+              aria-hidden="true"
+              className="skill-marquee-highlight pointer-events-none absolute inset-0 z-10 overflow-hidden"
+            >
+              <div className="flex w-max animate-marquee">
+                {tickerSkills.map((skill, idx) => {
+                  const SkillIcon = skillIcons[skill.icon];
+
+                  return (
+                    <div
+                      key={`${skill.name}-${idx}`}
+                      className="flex shrink-0 items-center gap-3 px-8 py-4"
+                    >
+                      <SkillIcon className="h-5 w-5 text-primary" />
+                      <span className="text-xl font-semibold text-transparent">
+                        {skill.name}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
