@@ -10,24 +10,29 @@ import { Button } from "@/components/Button";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import type { FormEvent } from "react";
+import {
+  CONTACT_FORM_FIELDS,
+  CONTACT_INFO,
+  PERSONAL_INFO,
+} from "@/lib/constants";
 
 const contactInfo = [
   {
     icon: FiMail,
     label: "Email",
-    value: "pedro@example.com",
-    href: "mailto:pedro@example.com",
+    value: PERSONAL_INFO.email,
+    href: `mailto:${PERSONAL_INFO.email}`,
   },
   {
     icon: FiPhone,
     label: "Phone",
-    value: "+1 (555) 123-4567",
-    href: "tel:+15551234567",
+    value: PERSONAL_INFO.phone,
+    href: `tel:${PERSONAL_INFO.phone.replace(/\s+/g, "")}`,
   },
   {
     icon: FiMapPin,
     label: "Location",
-    value: "San Francisco, CA",
+    value: PERSONAL_INFO.location,
     href: "#",
   },
 ];
@@ -56,7 +61,7 @@ export const Contact = () => {
 
       if (!serviceId || !templateId || !publicKey) {
         throw new Error(
-          "EmailJS configuration is missing. Please check your environment variables."
+          "EmailJS configuration is missing. Please check your environment variables.",
         );
       }
 
@@ -68,7 +73,7 @@ export const Contact = () => {
           email: formData.email,
           message: formData.message,
         },
-        publicKey
+        publicKey,
       );
 
       setSubmitStatus({
@@ -101,76 +106,59 @@ export const Contact = () => {
             Get In Touch
           </span>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
-            Let's build{" "}
-            <span className="font-serif italic font-normal text-white">
-              something great.
-            </span>
+            {CONTACT_INFO.heading}
           </h2>
           <p className="text-muted-foreground animate-fade-in animation-delay-200">
-            Have a project in mind? I'd love to hear about it. Send me a message
-            and let's discuss how we can work together.
+            {CONTACT_INFO.subheading}
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
           <div className="glass p-8 rounded-3xl border border-primary/30 animate-fade-in animation-delay-300">
             <form className="space-y-6" onSubmit={handleSubmit}>
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium mb-2"
-                >
-                  Name
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  required
-                  placeholder="Your name..."
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
-                  className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium mb-2"
-                >
-                  Email
-                </label>
-                <input
-                  required
-                  placeholder="your@email.com"
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
-                  className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium mb-2"
-                >
-                  Message
-                </label>
-                <textarea
-                  rows={5}
-                  required
-                  value={formData.message}
-                  onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
-                  }
-                  placeholder="Your message..."
-                  className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none"
-                />
-              </div>
+              {CONTACT_FORM_FIELDS.map((field) => (
+                <div key={field.name}>
+                  <label
+                    htmlFor={field.name}
+                    className="block text-sm font-medium mb-2"
+                  >
+                    {field.label}
+                  </label>
+                  {field.type === "textarea" ? (
+                    <textarea
+                      id={field.name}
+                      name={field.name}
+                      rows={5}
+                      required={field.required}
+                      value={formData[field.name]}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          [field.name]: e.target.value,
+                        })
+                      }
+                      placeholder={field.placeholder}
+                      className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none"
+                    />
+                  ) : (
+                    <input
+                      id={field.name}
+                      name={field.name}
+                      type={field.type}
+                      required={field.required}
+                      value={formData[field.name]}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          [field.name]: e.target.value,
+                        })
+                      }
+                      placeholder={field.placeholder}
+                      className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                    />
+                  )}
+                </div>
+              ))}
 
               <Button
                 className="w-full"
@@ -198,9 +186,9 @@ export const Contact = () => {
                      }`}
                 >
                   {submitStatus.type === "success" ? (
-                    <FiCheckCircle className="w-5 h-5 flex-shrink-0" />
+                    <FiCheckCircle className="w-5 h-5 shrink-0" />
                   ) : (
-                    <FiAlertCircle className="w-5 h-5 flex-shrink-0" />
+                    <FiAlertCircle className="w-5 h-5 shrink-0" />
                   )}
                   <p className="text-sm">{submitStatus.message}</p>
                 </div>
@@ -238,13 +226,11 @@ export const Contact = () => {
             {/* Availability Card */}
             <div className="glass rounded-3xl p-8 border border-primary/30">
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+                <span className="w-3 h-3 bg-indigo-600 rounded-full animate-pulse" />
                 <span className="font-medium">Currently Available</span>
               </div>
               <p className="text-muted-foreground text-sm">
-                I'm currently open to new opportunities and exciting projects.
-                Whether you need a full-time engineer or a freelance consultant,
-                let's talk!
+                {CONTACT_INFO.availabilityNotice}
               </p>
             </div>
           </div>

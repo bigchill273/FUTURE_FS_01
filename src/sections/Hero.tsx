@@ -1,29 +1,12 @@
 import { Button } from "@/components/Button";
 import { FiArrowRight, FiChevronDown, FiDownload } from "react-icons/fi";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
-import { PERSONAL_INFO, SOCIAL_LINKS } from "@/lib/constants";
+import {
+  PERSONAL_INFO,
+  SKILL_CATEGORIES,
+  SOCIAL_LINKS,
+} from "@/lib/constants";
 import { TypeAnimation } from "react-type-animation";
-
-const skills = [
-  "React",
-  "Next.js",
-  "TypeScript",
-  "Node.js",
-  "GraphQL",
-  "PostgreSQL",
-  "MongoDB",
-  "Redis",
-  "Docker",
-  "AWS",
-  "Vercel",
-  "Tailwind CSS",
-  "Prisma",
-  "Jest",
-  "Cypress",
-  "Figma",
-  "Git",
-  "GitHub Actions",
-];
 
 export const Hero = () => {
   const sequence = PERSONAL_INFO.typedText.flatMap((item) => [item, 1500]);
@@ -83,7 +66,10 @@ export const Hero = () => {
               </h1>
               <p className="text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200">
                 Hey, I'm
-                <code className="font-medium"> &lt;Natnael Shumet /&gt; </code>
+                <code className="font-medium">
+                  {" "}
+                  &lt;{PERSONAL_INFO.name} /&gt;{" "}
+                </code>
                 {PERSONAL_INFO.shortBio}
               </p>
             </div>
@@ -126,8 +112,8 @@ export const Hero = () => {
               />
               <div className="relative glass rounded-3xl p-2 glow-border">
                 <img
-                  src="/profile-photo.png"
-                  alt="Natnael Shumet"
+                  src={PERSONAL_INFO.avatarUrl}
+                  alt={PERSONAL_INFO.name}
                   className="w-full aspect-4/5 object-cover rounded-2xl"
                 />
 
@@ -167,10 +153,10 @@ export const Hero = () => {
              bg-linear-to-l from-background to-transparent z-10"
             />
             <div className="flex animate-marquee">
-              {[...skills, ...skills].map((skill, idx) => (
+              {[...SKILL_CATEGORIES, ...SKILL_CATEGORIES].map((skill, idx) => (
                 <div key={idx} className="shrink-0 px-8 py-4">
                   <span className="text-xl font-semibold text-muted-foreground/50 hover:text-muted-foreground transition-colors">
-                    {skill}
+                    {skill.name}
                   </span>
                 </div>
               ))}

@@ -1,20 +1,16 @@
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-
-const socialLinks = [
-  { icon: FaGithub, href: "#", label: "GitHub" },
-  { icon: FaLinkedin, href: "#", label: "LinkedIn" },
-  { icon: FaTwitter, href: "#", label: "Twitter" },
-];
-
-const footerLinks = [
-  { href: "#about", label: "About" },
-  { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
-  { href: "#contact", label: "Contact" },
-];
+import { FOOTER_INFO, PERSONAL_INFO, SOCIAL_LINKS } from "@/lib/constants";
 
 export const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const initials = PERSONAL_INFO.name
+    .split(" ")
+    .map((namePart) => namePart[0])
+    .join("");
+  const footerLinks = FOOTER_INFO.quickLinks.filter(
+    (link) => link.href !== "#",
+  );
+  const socialLinks = SOCIAL_LINKS.filter(
+    (social) => social.platform !== "email",
+  );
 
   return (
     <footer className="py-12 border-t border-border">
@@ -23,10 +19,11 @@ export const Footer = () => {
           {/* Logo & Copyright */}
           <div className="text-center md:text-left">
             <a href="#" className="text-xl font-bold tracking-tight">
-              PM<span className="text-primary">.</span>
+              {initials}
+              <span className="text-primary">.</span>
             </a>
             <p className="text-sm text-muted-foreground mt-2">
-              © {currentYear} Pedro Machado. All rights reserved.
+              {FOOTER_INFO.copyrightText}
             </p>
           </div>
 
@@ -34,7 +31,7 @@ export const Footer = () => {
           <nav className="flex flex-wrap justify-center gap-6">
             {footerLinks.map((link) => (
               <a
-                key={link.href}
+                key={link.id}
                 href={link.href}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
@@ -47,12 +44,12 @@ export const Footer = () => {
           <div className="flex items-center gap-4">
             {socialLinks.map((social) => (
               <a
-                key={social.label}
-                href={social.href}
-                aria-label={social.label}
+                key={social.name}
+                href={social.url}
+                aria-label={social.name}
                 className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all"
               >
-                <social.icon className="w-5 h-5" />
+                <social.iconName className="w-5 h-5" />
               </a>
             ))}
           </div>
