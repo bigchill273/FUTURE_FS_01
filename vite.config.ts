@@ -13,4 +13,13 @@ export default defineConfig({
       "@C": path.resolve(import.meta.dirname, "./src/components"),
     },
   },
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://127.0.0.1:5000",
+        changeOrigin: true,
+      },
+    },
+  },
+  envDir: "./",
 });

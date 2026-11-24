@@ -8,7 +8,7 @@
 
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { FiFolder, FiHome, FiMail, FiUser } from "react-icons/fi";
+import { FiBookOpen, FiFolder, FiHome, FiMail, FiUser } from "react-icons/fi";
 import type { IconType } from "react-icons";
 
 // ==========================================
@@ -89,7 +89,8 @@ export const PERSONAL_INFO: PersonalInfo = {
     "I prioritize writing clean, maintainable code, everything from designing responsive component architectures, and delivering fluid user experiences to building complex enterprise application.",
     "Even though, my journey began with a curiosity for how things work, it has evolved into a deep expertise in modern web technologies.",
   ],
-  mission: "Objective — Creating robust digital experiences, which are not just functional, but truly delightful - products that users enjoy using",
+  mission:
+    "Objective — Creating robust digital experiences, which are not just functional, but truly delightful - products that users enjoy using",
   email: "nattyshumet1627@gmail.com",
   phone: "+251 974 269 898",
   location: "Addis Ababa, Ethiopia",
@@ -97,7 +98,7 @@ export const PERSONAL_INFO: PersonalInfo = {
   avatarUrl: "/profile-photo.png",
   github: "https://github.com/bigchill273",
   linkedin: "https://www.linkedin.com/in/natnael-shumet-953420434/",
-  twitter: "https://twitter.com/stuff",
+  twitter: "https://x.com/atomix_238",
 } as const;
 
 // ==========================================
@@ -105,122 +106,103 @@ export const PERSONAL_INFO: PersonalInfo = {
 // ==========================================
 
 export const NAV_LINKS: NavLink[] = [
-  { id: "home", label: "Home", href: "#", icon: FiHome },
-  { id: "about", label: "About", href: "#about", icon: FiUser },
-  { id: "projects", label: "Projects", href: "#projects", icon: FiFolder },
-  { id: "contact", label: "Contact", href: "#contact", icon: FiMail },
+  { id: "home", label: "Home", href: "/", icon: FiHome },
+  { id: "about", label: "About", href: "/#about", icon: FiUser },
+  { id: "blogs", label: "Blogs", href: "/#blog", icon: FiBookOpen },
+  { id: "projects", label: "Projects", href: "/#projects", icon: FiFolder },
+  { id: "contact", label: "Contact", href: "/#contact", icon: FiMail },
 ] as const;
 
 
 
 // ==========================================
-// 4. Skills & Tech Stack
+// 3. Skills & Tech Stack
 // ==========================================
 
 export const SKILL_CATEGORIES:  Skills[] = [
   { name: "React.js", icon: "react"},
   { name: "TypeScript", icon: "FileCode"},
   { name: "JavaScript (ES6+)", icon: "Zap"},
+  { name: "Next.js", icon: "Nextjs"},
   { name: "Tailwind CSS", icon: "Palette"},
   { name: "Node.js", icon: "Server"},
   { name: "Express.js", icon: "Layers"},
   { name: "RESTful APIs", icon: "Network"},
   { name: "MongoDB", icon: "Database"},
-  { name: "MySQL", icon: "Table"},
+  { name: "Supabase", icon: "supabase"},
   { name: "PostgreSQL", icon: "Boxes"},
   { name: "Git & GitHub", icon: "GitBranch"},
   { name: "Vite", icon: "Cpu"},
   {name: "Bun", icon: "Bun"},
 ] as const;
 
-// Flattened list for quick access or skill tag clouds
-//export const ALL_SKILLS = SKILL_CATEGORIES.flatMap((category) => category.skills);
 
 // ==========================================
-// 5. Featured Projects
+// 4. Featured Projects
 // ==========================================
 
 export const PROJECTS:  Project[] = [
   {
-    id: "shopverse-ecommerce",
-    title: "ShopVerse - Full Stack E-Commerce",
-    subtitle: "Complete Online Storefront with Cart & Payment Flow",
+    id: "future-fs-02",
+    title: "LeadLedger CRM",
+    subtitle: "Client Lead Management & Sales Pipeline",
     description:
-      "A responsive e-commerce web platform featuring product catalog filtering, real-time cart state management, user authentication, and checkout simulation.",
+      "A full-stack CRM for capturing client inquiries, tracking leads through a sales pipeline, managing contacts and follow-up tasks, and viewing conversion analytics.",
     highlights: [
-      "Custom product filtering & category navigation",
-      "Persistent shopping cart with local storage & state management",
-      "Stripe payment gateway sandbox integration",
-      "RESTful API endpoints for inventory and orders",
+      "Capture public inquiries and manage leads through every sales stage",
+      "Visual Kanban pipeline with stage counts and revenue totals",
+      "Maintain client contacts, categorized notes, and follow-up tasks",
+      "Review conversion metrics, lead sources, and pipeline activity",
     ],
-    tags: ["React", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
-    image: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=1200&q=80",
-    liveUrl: "https://shopverse-demo.example.com",
-    githubUrl: "https://github.com/alexmorgan-dev/shopverse-ecommerce",
+    tags: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Express", "SQLite"],
+    image: "/projects/leadledger.png",
+    liveUrl: "https://leadledger-alpha.vercel.app",
+    githubUrl: "https://github.com/bigchill273/FUTURE_FS_02",
     featured: true,
     category: "Full Stack",
   },
   {
-    id: "taskflow-kanban",
-    title: "TaskFlow - Agile Kanban SaaS",
-    subtitle: "Collaborative Project Management & Productivity Tool",
+    id: "future-fs-03",
+    title: "Blaze Addis",
+    subtitle: "Restaurant, Café & Bakery Menu and Ordering",
     description:
-      "A sleek productivity dashboard enabling agile teams to organize tasks across sprints, track deadlines, assign priorities, and visualize progress in real-time.",
+      "A responsive digital menu for Blaze Addis, where customers can explore Ethiopian dishes, fast food, fresh bakery items, and catering, then place orders through Telegram.",
     highlights: [
-      "Fluid drag-and-drop task workflow with status progression",
-      "Interactive data charts and completion velocity metrics",
-      "Form validation with Zod and clean modal dialogs",
-      "Responsive glassmorphism UI with dark theme support",
+      "Browse food categories, dishes, bakery items, and catering services",
+      "View item details, portion options, add-ons, and prices",
+      "Build an order and review its confirmation and pickup details",
+      "Designed to make Blaze Addis easier to discover on mobile",
     ],
-    tags: ["React", "TypeScript", "Tailwind CSS", "Zod", "React Icons"],
-    image: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=1200&q=80",
-    liveUrl: "https://taskflow-demo.example.com",
-    githubUrl: "https://github.com/alexmorgan-dev/taskflow-kanban",
+    tags: ["React", "TypeScript", "Vite", "Tailwind CSS", "Motion"],
+    image: "/projects/blaze-addis.png",
+    liveUrl: "https://bigchill273.github.io/FUTURE_FS_03/",
+    githubUrl: "https://github.com/bigchill273/FUTURE_FS_03",
     featured: true,
     category: "Frontend",
   },
   {
-    id: "dev-portfolio",
-    title: "Modern Interactive Portfolio",
-    subtitle: "Personal Digital Resume & Showcase Website",
+    id: "jemea",
+    title: "Jemea",
+    subtitle: "Trello-Inspired Collaborative Project Management",
     description:
-      "The exact portfolio application you are browsing, engineered with React 19, Tailwind CSS v4, React Icons, responsive navigation, and EmailJS contact delivery.",
+      "A full-stack project management app for organizing work on collaborative boards, with drag-and-drop tasks, real-time updates, and subscription tiers.",
     highlights: [
-      "Tailwind v4 styling with custom CSS variables & glass effects",
-      "Interactive contact form with automated email validation",
-      "Smooth scroll sections with sticky navigation header",
-      "100% responsive across desktop, tablet, and mobile displays",
+      "Create boards and organize work across customizable columns",
+      "Manage tasks with drag-and-drop, priorities, assignees, and due dates",
+      "Synchronize board changes in real time with Supabase",
+      "Sign in with Clerk and access free or premium subscription features",
     ],
-    tags: ["React", "TypeScript", "Tailwind CSS", "Vite", "EmailJS"],
-    image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80",
-    liveUrl: "https://alexmorgan-portfolio.example.com",
-    githubUrl: "https://github.com/alexmorgan-dev/personal-portfolio",
+    tags: ["Next.js", "TypeScript", "Supabase", "Clerk", "dnd-kit", "Tailwind CSS"],
+    image: "/projects/jemea.png",
+    liveUrl: "https://jeme-a-112211294024.europe-west2.run.app",
+    githubUrl: "https://github.com/bigchill273/jemea",
     featured: true,
-    category: "Frontend",
-  },
-  {
-    id: "devpulse-community-blog",
-    title: "DevPulse - Tech Community & Blog",
-    subtitle: "Markdown Publishing & Developer Discussion Engine",
-    description:
-      "A full-stack publishing platform allowing developers to create technical tutorials, comment on articles, bookmark resources, and explore trending tech topics.",
-    highlights: [
-      "Markdown editor with live preview and code syntax highlighting",
-      "Relational SQL schema for users, articles, tags, and comments",
-      "Search and tag indexing for quick discoverability",
-      "Secure session handling and role-based permissions",
-    ],
-    tags: ["React", "Node.js", "Express", "MySQL", "Tailwind CSS"],
-    image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80",
-    liveUrl: "https://devpulse-demo.example.com",
-    githubUrl: "https://github.com/alexmorgan-dev/devpulse-blog",
-    featured: false,
     category: "Full Stack",
   },
 ] as const;
 
 // ==========================================
-// 8. Social Links & Contact Details
+// 5. Social Links & Contact Details
 // ==========================================
 
 export const SOCIAL_LINKS: SocialLink[] = [
@@ -278,19 +260,14 @@ export const CONTACT_FORM_FIELDS:  ContactFormField[] = [
     name: "message",
     label: "Your Message",
     type: "textarea",
-    placeholder: "Hi Alex, I came across your portfolio and would like to discuss...",
+    placeholder: "Hi Natty, I came across your portfolio and would like to discuss...",
     required: true,
   },
 ] as const;
 
-// ==========================================
-// 9. Task 1 (Future Interns) Specific Metadata
-// ==========================================
-
-
 
 // ==========================================
-// 10. Footer Information
+// 6. Footer Information
 // ==========================================
 
 export const FOOTER_INFO = {

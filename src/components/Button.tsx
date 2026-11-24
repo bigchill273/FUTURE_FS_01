@@ -3,6 +3,7 @@ import type { ButtonHTMLAttributes, PropsWithChildren } from "react";
 type ButtonProps = PropsWithChildren<
   ButtonHTMLAttributes<HTMLButtonElement> & {
     size?: "sm" | "default" | "lg";
+    href?: string;
   }
 >;
 
@@ -10,6 +11,7 @@ export const Button = ({
   className = "",
   size = "default",
   children,
+  href,
   ...props
 }: ButtonProps) => {
   const baseClasses =
@@ -21,11 +23,21 @@ export const Button = ({
     lg: "px-8 py-4 text-lg",
   };
   const classes = `${baseClasses} ${sizeClasses[size]} ${className} hover:scale-110 duration-1000 ease-in-out`;
-  return (
-    <button className={classes} {...props}>
-      <a href="#contact" className="relative flex items-center justify-center gap-2">
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        className={`${classes} relative inline-flex items-center justify-center gap-2`}
+      >
         {children}
       </a>
+    );
+  }
+
+  return (
+    <button className={`${classes} inline-flex items-center justify-center gap-2`} {...props}>
+      {children}
     </button>
   );
 };

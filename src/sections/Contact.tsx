@@ -10,6 +10,7 @@ import { Button } from "@/components/Button";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import type { FormEvent } from "react";
+import { saveContactMessage } from "@/lib/contactApi";
 import {
   CONTACT_FORM_FIELDS,
   CONTACT_INFO,
@@ -33,7 +34,7 @@ const contactInfo = [
     icon: FiMapPin,
     label: "Location",
     value: PERSONAL_INFO.location,
-    href: "#",
+    href: "/#location",
   },
 ];
 
@@ -65,6 +66,7 @@ export const Contact = () => {
         );
       }
 
+      await saveContactMessage(formData);
       await emailjs.send(
         serviceId,
         templateId,
@@ -82,11 +84,13 @@ export const Contact = () => {
       });
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
-      console.error("EmailJS error:", error);
+      console.error("Contact form submission error:", error);
       setSubmitStatus({
         type: "error",
         message:
-          error.text || "Failed to send message. Please try again later.",
+          error instanceof Error
+            ? error.message
+            : "Failed to send message. Please try again later.",
       });
     } finally {
       setIsLoading(false);

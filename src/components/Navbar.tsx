@@ -12,7 +12,7 @@ function Navbar() {
     <header className="max-h-1/8 w-full fixed top-0 inset-x-0 mx-auto py-6 px-8 md:px-18 z-100">
       <nav className="container flex items-center justify-between">
         <motion.a
-          href="#"
+          href="/"
           className="text-xl md:text-2xl font-bold bg-blue-300/10 backdrop-blur-lg rounded-full p-2.5"
           whileHover={{
             color: "var(--color-primary)",
@@ -60,7 +60,7 @@ function Navbar() {
             ease: "easeInOut",
           }}
         >
-          <Button>Contact Me</Button>
+          <Button href="/#contact">Contact Me</Button>
         </motion.div>
       </nav>
     </header>

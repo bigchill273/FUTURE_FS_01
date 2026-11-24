@@ -18,7 +18,7 @@ export const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Logo & Copyright */}
           <div className="text-center md:text-left">
-            <a href="#" className="text-xl font-bold tracking-tight">
+            <a href="/" className="text-xl font-bold tracking-tight">
               {initials}
               <span className="text-primary">.</span>
             </a>

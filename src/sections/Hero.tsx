@@ -13,10 +13,12 @@ import {
   SiJavascript,
   SiMongodb,
   SiMysql,
+  SiNextdotjs,
   SiNodedotjs,
   SiPostgresql,
   SiPostman,
   SiReact,
+  SiSupabase,
   SiTailwindcss,
   SiTypescript,
   SiVite,
@@ -28,12 +30,13 @@ const skillIcons: Record<string, IconType> = {
   react: SiReact,
   FileCode: SiTypescript,
   Zap: SiJavascript,
+  Nextjs: SiNextdotjs,
   Palette: SiTailwindcss,
   Server: SiNodedotjs,
   Layers: SiExpress,
   Network: SiPostman,
   Database: SiMongodb,
-  Table: SiMysql,
+  supabase: SiSupabase,
   Boxes: SiPostgresql,
   GitBranch: SiGit,
   Cpu: SiVite,
@@ -111,7 +114,7 @@ export const Hero = () => {
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
-              <Button size="lg">
+              <Button href="/#contact" size="lg">
                 Contact Me <FiArrowRight className="w-5 h-5" />
               </Button>
               <AnimatedBorderButton>
@@ -122,7 +125,7 @@ export const Hero = () => {
 
             {/* Social Links */}
             <div className="flex items-center gap-4 animate-fade-in animation-delay-400">
-              <span className="text-sm text-muted-foreground">Follow me: </span>
+              <span className="text-sm text-muted-foreground">Find me: </span>
               {SOCIAL_LINKS.map((social, idx) => (
                 <a
                   key={idx}
