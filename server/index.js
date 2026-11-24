@@ -60,3 +60,5 @@ start().catch((error) => {
   console.error("Unable to start API server:", error);
   process.exitCode = 1;
 });
+
+module.exports = app;
