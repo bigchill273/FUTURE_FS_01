@@ -194,7 +194,7 @@ export const PROJECTS:  Project[] = [
     ],
     tags: ["Next.js", "TypeScript", "Supabase", "Clerk", "dnd-kit", "Tailwind CSS"],
     image: "/projects/jemea.png",
-    liveUrl: "https://jeme-a-112211294024.europe-west2.run.app",
+    liveUrl: "https://jeme-a.vercel.app",
     githubUrl: "https://github.com/bigchill273/jemea",
     featured: true,
     category: "Full Stack",
