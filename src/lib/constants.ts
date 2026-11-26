@@ -94,10 +94,10 @@ export const PERSONAL_INFO: PersonalInfo = {
   email: "nattyshumet1627@gmail.com",
   phone: "+251 974 269 898",
   location: "Addis Ababa, Ethiopia",
-  resumeUrl: "/resume.pdf",
-  avatarUrl: "/profile-photo.png",
+  resumeUrl: "/cv.pdf",
+  avatarUrl: "/profile-photo.jpg",
   github: "https://github.com/bigchill273",
-  linkedin: "https://www.linkedin.com/in/natnael-shumet-953420434/",
+  linkedin: "https://www.linkedin.com/in/nate273/",
   twitter: "https://x.com/atomix_238",
 } as const;
 
